@@ -61,7 +61,6 @@ export const GetProviders = ChatAPI.Register({
 });
 
 export const DeleteItemFromChatHistory = (ID, ListIdentifier) => {
-    console.log(ID, ListIdentifier);
     const CurrentStoredChatResponses = StoredChatResponses();
     CurrentStoredChatResponses[ListIdentifier] = CurrentStoredChatResponses[ListIdentifier]
         .filter((SavedResponse) => SavedResponse.ID !== ID);
