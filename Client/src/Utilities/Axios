@@ -1,9 +1,0 @@
-import Axios from 'axios'; 
-
-const Instance = Axios.create({
-  headers: {
-        timeout : 1000,
-  }, 
-});
-
-export default Instance;
