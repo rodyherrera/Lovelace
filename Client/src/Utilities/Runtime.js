@@ -24,7 +24,7 @@
  * =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 ****/
 
-import Axios from 'axios';
+import Axios from './Axios';
 import { ReplaceURLParameters } from './Algorithms';
 
 export const With = (Callback, ...Arguments) => Callback(...Arguments);
