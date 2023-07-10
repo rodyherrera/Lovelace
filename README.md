@@ -1,5 +1,12 @@
 
-# What the hell is Lovelace?
+# What the hell is Lovelace? 
+<a href="https://ko-fi.com/codewithrodi"> 
+    <img align="left" src="https://cdn.ko-fi.com/cdn/kofi3.png?v=3" height="50" width="200" alt="Donate - Contribute" />
+</a>
+
+<br /> <br />
+
+<a href='https://lovelace-docs.codewithrodi.com'>Go read the Lovelace documentation.</a>
 
 Lovelace is a web application which allows free interaction with ChatGPT using Python's GPT4FREE library. The software is written in JavaScript, using NodeJS + [Express](https://expressjs.com/es/4x/api.html) + [SocketIO](https://socket.io/) on the server side and [Vite](https://vitejs.dev/) + [ReactJS](https://react.dev/) on the Frontend.
 
@@ -9,20 +16,20 @@ The backend allows different clients to communicate with ChatGPT. If your purpos
 
 Table of Contents:
 - Installing necessary dependencies before proceeding with the installation. [[View]](/#before-you-start-the-installation)
-- Cloning the Github repository that contains the Lovelace source code. [[View]](/installation)
+- Cloning the Github repository that contains the Lovelace source code. [[View]](/#cloning-the-repository-and-starting-the-installation)
 - Knowing the functionality of the files and directories found within the cloned repository. [[View]](/#knowing-a-little-more-about-the-contents-of-the-cloned-repository)
-- Running the backend server on the network and in production mode with the help of the process manager for NodeJS PM2. [[View]](/mounting-server-in-the-network/)
+- Running the backend server on the network and in production mode with the help of the process manager for NodeJS PM2. [[View]](/#riding-the-lovelace-backend-and-going-geeper-into-it)
 - Knowing the environment variables that the Lovelace Backend has. [[View]](/#what-about-environment-variables)
-- Mounting the Lovelace Frotend built with Vite + React on the network. [[View]](/mounting-webapp-in-the-network/)
+- Mounting the Lovelace Frotend built with Vite + React on the network. [[View]](/#setting-up-the-vite--react-application-delving-into-the-client)
 - Knowing and modifying the environment variables that the Vite + React application has (Frontend). [[View]](/#modifying-environment-variables)
 - Modifying the host and port where the development server of the Vite + React web application (Frontend) will be mounted. [[View]](/#modifying-the-port-and-hostname-of-the-clients-server)
 - Why was Vite selected to build the software interface? [[View]](/#why-is-vite-used-in-the-client-application)
 - Internationalization within the web application, multiple languages ​​under the same interface! [[View]](/#internationalization-within-the-application)
 - Learning to make requests to the API located on the backend server, in order to communicate with the AI. [[View]](/learning-how-to-use-the-api-for-interact-with-the-ai/)
-- Using WebSocket's to connect to the server using SocketIO and establish communication with the AI. [[View]](/learning-how-to-use-websockets-for-interact-with-the-ai/)
+- Using WebSocket's to connect to the server using SocketIO and establish communication with the AI. [[View]](/#using-the-api-provided-by-the-backend-to-interact-with-the-ai)
 - Getting to know some of the clients available from SocketIO in other technologies/programming languages. [[View]](/#socketio-clients-to-establish-communication-with-the-server)
-- Using the API to obtain the list of providers and their respective models available, both for requests to the AI ​​through the API and WebSocket's. [[View]](/available-providers-and-models/)
-- An overview of the web application. [[View]](/learning-how-to-use-the-web-application/)
+- Using the API to obtain the list of providers and their respective models available, both for requests to the AI ​​through the API and WebSocket's. [[View]](/#using-the-api-to-get-the-list-of-available-providers-and-models)
+- An overview of the web application. [[View]](/#time-to-learn-how-to-use-the-web-application)
 - Knowing the main functionalities provided by the Lovelace web application. [[View]](/#about-the-options-available-at-first-glance)
 - Learning to use the settings menu provided by the web application and knowing each of its features. [[View]](/#whats-behind-the-settings-menu)
 - Learning to use the history of interactions with the AI ​​provided by the web application. [[View]](/#the-history-of-interactions-with-ada)
@@ -551,3 +558,15 @@ Consider that, within the chat, at the top you have the options `Settings - Acti
 In the same way, when scrolling down there is a white scroll progress bar at the top, as can be seen in the images.
 
 In the upper right part there is the menu, where when you open it in the lower left part to the right of the `GPT4FREE` button you can select the language in which you want to see the user interface, also in the upper part of the option you have the remaining options of the menu to be able to navigate.
+
+# Exemplifying the use of the web application on computers and mobiles.
+
+## Using the web application on Desktop
+In the video that will be presented below, you will be able to see the different animations and options that Lovelace provides in its web application.
+
+[![Watch the video](https://www.freeiconspng.com/uploads/play-button-icon-png-8.png)](/Documentation/static/videos/WebApp-Usage.mp4)
+
+## Using the web application on mobile
+In the following video, you can also see how multiple requests are made at the same time to resolve a request, animations among other things....
+
+[![Watch the video](https://www.freeiconspng.com/uploads/play-button-icon-png-8.png     )](/Documentation/static/videos/WebApp-Usage.mp4)
