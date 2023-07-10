@@ -12,9 +12,9 @@
   },
   "scripts": {
     "start": "node Server",
-    "production": "pm2 start PM2.config.js",
-    "stop": "pm2 stop PM2.config.js",
-    "restart": "pm2 restart PM2.config.js"
+    "production": "npx pm2 start PM2.config.js",
+    "stop": "npx pm2 stop PM2.config.js",
+    "restart": "npx pm2 restart PM2.config.js"
   },
   "dependencies": {
     "compression": "^1.7.4",
