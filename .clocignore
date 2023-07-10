@@ -1,0 +1,14 @@
+Client/node_modules
+Client/package-lock.json
+Client/package.json
+Client/.eslintrc.cjs
+Client/.gitignore
+Client/vite.config.js
+
+Server/Tools/GPT/g4f
+Server/node_modules
+Server/package-lock.json
+Server/package.json
+Server/PM2.config.js
+
+Documentation/

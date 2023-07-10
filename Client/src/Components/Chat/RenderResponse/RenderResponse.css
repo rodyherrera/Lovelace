@@ -1,0 +1,70 @@
+/***
+ * Copyright (C) Rodolfo Herrera Hernandez. All rights reserved.
+ * Licensed under the MIT license. See LICENSE file in the project root
+ * for full license information.
+ *
+ * =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+ *
+ * In the vast universe of knowledge, the Open Source philosophy 
+ * shines like a radiant star. In this vein, Lovelace emerges 
+ * as an autonomous alternative to ChatGPT, based on 
+ * open source and self-hosting capabilities.
+ * 
+ * Written in JavaScript, interacting with the <g4f> library written 
+ * in Python, allows communication with ChatGPT through the use 
+ * of different services that facilitate its use by the public.
+ * 
+ * For related information - https://github.com/CodeWithRodi/Lovelace/
+ * See also - https://github.com/xtekky/gpt4free
+ * 
+ * :: https://lovelace.codewithrodi.com/
+ * :: https://lovelace-backend.codewithrodi.com/
+ * :: https://lovelace-docs.codewithrodi.com/
+ *
+ * =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+****/
+
+.Render-Response-Box[data-discipline='Server']{
+    background-color: #121212;
+}
+
+.Render-Response-Box[data-discipline='Server'] .Render-Response-Icon-Box{
+    margin-top: 2.7px;
+}
+
+.Render-Response-Icon-Box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Render-Response-Box{
+    width: 99%;
+    padding: 1rem;
+    border-radius: 1rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    color: #FFFFFF;
+}
+
+.Render-Response-Content-Box{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+@media screen and (max-width: 768px){
+    .Render-Response-Box{
+        border-radius: 0;
+        padding: .5rem 1rem;
+    }
+
+    .Render-Response-Box[data-discipline='Server'] .Render-Response-Icon-Box{
+        margin-top: 0;
+    }
+
+    .Render-Response-Box[data-discipline='Server']{
+        background-color: #000000;
+    }
+}

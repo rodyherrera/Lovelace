@@ -1,0 +1,51 @@
+{
+  "name": "lovelace-client",
+  "private": false,
+  "version": "1.0.0",
+  "type": "module",
+  "author": {
+    "name": "CodeWithRodi",
+    "email": "contact@codewithrodi.com",
+    "url": "https://www.codewithrodi.com/"
+  },
+  "repository": {
+    "url": "https://github.com/CodeWithRodi/Lovelace/"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.13.5",
+    "animejs": "^3.2.1",
+    "axios": "^1.4.0",
+    "evergreen-ui": "^7.1.8",
+    "framer-motion": "^10.12.18",
+    "hiding-header-react": "^0.6.6",
+    "lorem-ipsum": "^2.0.8",
+    "react": "^18.2.0",
+    "react-code-blocks": "*",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.9.0",
+    "react-pendulum": "^0.0.1",
+    "react-reveal": "^1.2.2",
+    "react-router-dom": "^6.12.1",
+    "react-useanimations": "^2.10.0",
+    "socket.io-client": "^4.7.1",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.37",
+    "@types/react-dom": "^18.0.11",
+    "@vitejs/plugin-react-swc": "^3.0.0",
+    "eslint": "^8.38.0",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.3.4",
+    "vite": "^4.3.9"
+  }
+}

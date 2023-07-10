@@ -1,0 +1,145 @@
+/***
+ * Copyright (C) Rodolfo Herrera Hernandez. All rights reserved.
+ * Licensed under the MIT license. See LICENSE file in the project root
+ * for full license information.
+ *
+ * =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+ *
+ * In the vast universe of knowledge, the Open Source philosophy 
+ * shines like a radiant star. In this vein, Lovelace emerges 
+ * as an autonomous alternative to ChatGPT, based on 
+ * open source and self-hosting capabilities.
+ * 
+ * Written in JavaScript, interacting with the <g4f> library written 
+ * in Python, allows communication with ChatGPT through the use 
+ * of different services that facilitate its use by the public.
+ * 
+ * For related information - https://github.com/CodeWithRodi/Lovelace/
+ * See also - https://github.com/xtekky/gpt4free
+ * 
+ * :: https://lovelace.codewithrodi.com/
+ * :: https://lovelace-backend.codewithrodi.com/
+ * :: https://lovelace-docs.codewithrodi.com/
+ *
+ * =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+****/
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+}
+
+body{
+    line-height: 1.5;
+    background-color: #121212;
+    color: #FFFFFF;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+#Lovelace-ROOT{
+    max-width: 2000px;
+    margin: 0 auto;
+}
+
+::-webkit-scrollbar-track{
+    background-color: transparent;
+}
+
+::-webkit-scrollbar{
+    width: 2px;
+    height: 2px;
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb{
+    border-radius: 0.5rem;
+    background-color: #c9c8c8;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background-color: #b3b2b2;
+}
+
+input{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: auto;
+    height: auto;
+    padding: 1rem;
+    background-color: transparent;
+    color: #FFFFFF;
+}
+
+p{
+    font-size: .95rem;
+}
+
+.Blurred-Box{
+    filter: blur(1.4px);
+}
+
+.Popover-Content{
+    font-size: 12px !important;
+}
+
+.Popover-Icon{
+    width: 15px !important;
+}
+
+.Button{
+    background: transparent;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    padding: 14px 10px;
+    cursor: pointer;
+    border-radius: .2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Button.Outlined{
+    border: 1px solid #FFFFFF;
+}
+
+.Button.No-BR{
+    border-radius: 0;
+}
+
+.Button.Outlined:hover{
+    opacity: .8;
+}
+
+.ub-box-szg_border-box{
+    box-shadow: unset !important;
+    background-color: #222222 !important;
+    color: #FFFFFF !important;
+}
+
+.ub-box-szg_border-box > :last-child{
+    border: unset !important;
+}
+
+div[evergreen-portal-container] > div{
+    z-index: 200 !important;
+}
+
+@media screen and (max-width: 768px){
+    body{
+        background-color: #000000;
+    }
+
+    main{
+        padding-top: 60px;
+    }
+
+    p,
+    .MuiTooltip-tooltip{
+        font-size: .7rem !important;
+    }
+}

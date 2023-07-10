@@ -1,0 +1,99 @@
+/***
+ * Copyright (C) Rodolfo Herrera Hernandez. All rights reserved.
+ * Licensed under the MIT license. See LICENSE file in the project root
+ * for full license information.
+ *
+ * =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+ *
+ * In the vast universe of knowledge, the Open Source philosophy 
+ * shines like a radiant star. In this vein, Lovelace emerges 
+ * as an autonomous alternative to ChatGPT, based on 
+ * open source and self-hosting capabilities.
+ * 
+ * Written in JavaScript, interacting with the <g4f> library written 
+ * in Python, allows communication with ChatGPT through the use 
+ * of different services that facilitate its use by the public.
+ * 
+ * For related information - https://github.com/CodeWithRodi/Lovelace/
+ * See also - https://github.com/xtekky/gpt4free
+ * 
+ * :: https://lovelace.codewithrodi.com/
+ * :: https://lovelace-backend.codewithrodi.com/
+ * :: https://lovelace-docs.codewithrodi.com/
+ *
+ * =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+****/
+
+#About-Page-Main{
+    padding: 7rem 0 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+#About-Page-Main #Introduction-Box{
+    text-align: center;
+}
+
+#About-Page-Main #Introduction-Box #Page-Title{
+    font-size: 1.6rem;
+}
+
+#About-Page-Main #Policies-Box{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin: 0 auto;
+    gap: 2rem;
+}
+
+#About-Page-Main .Policy-Title{
+    letter-spacing: 1.5px;
+    opacity: .8;
+    margin-bottom: .7rem;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+#About-Page-Main .Policy-Content-Box{
+    display: flex;
+    flex-direction: column;
+    gap: .7rem;
+}
+
+#About-Page-Main .Policy-Description{
+    font-size: .85rem;   
+}
+
+@media screen and (max-width: 768px){
+    #About-Page-Main{
+        gap: 3rem;
+    }
+
+    #About-Page-Main #Introduction-Box #Page-Title{
+        font-size: 1.3rem;
+    }
+
+    #About-Page-Main #Introduction-Box #Page-Subtitle{
+        max-width: 90%;
+        font-size: .8rem;
+        margin: .5rem auto 0;
+    }
+
+    #About-Page-Main{
+        padding: 5rem 1rem 1rem;
+    }
+
+    #About-Page-Main .Policy-Title{
+        font-size: .95rem;
+    }
+
+    #About-Page-Main .Policy-Description{
+        font-size: .7rem;
+    }
+
+    #About-Page-Main #Policies-Box{
+        width: 100%;
+    }
+}

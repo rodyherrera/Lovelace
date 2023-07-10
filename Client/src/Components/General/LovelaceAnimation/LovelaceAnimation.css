@@ -1,0 +1,62 @@
+/***
+ * Copyright (C) Rodolfo Herrera Hernandez. All rights reserved.
+ * Licensed under the MIT license. See LICENSE file in the project root
+ * for full license information.
+ *
+ * =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+ *
+ * In the vast universe of knowledge, the Open Source philosophy 
+ * shines like a radiant star. In this vein, Lovelace emerges 
+ * as an autonomous alternative to ChatGPT, based on 
+ * open source and self-hosting capabilities.
+ * 
+ * Written in JavaScript, interacting with the <g4f> library written 
+ * in Python, allows communication with ChatGPT through the use 
+ * of different services that facilitate its use by the public.
+ * 
+ * For related information - https://github.com/CodeWithRodi/Lovelace/
+ * See also - https://github.com/xtekky/gpt4free
+ * 
+ * :: https://lovelace.codewithrodi.com/
+ * :: https://lovelace-backend.codewithrodi.com/
+ * :: https://lovelace-docs.codewithrodi.com/
+ *
+ * =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+****/
+
+#Lovelace-Animation-Box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    z-index: 100;
+}
+
+#Firework-Canvas{
+    position: absolute;
+    z-index: 50;
+}
+
+#Lovelace-Animation-Box .Title{
+    font-weight: 200;
+    font-size: 2.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5rem;
+}
+
+#Lovelace-Animation-Box .Title .Letter{
+    display: inline-block;
+    line-height: 1rem;
+}
+
+@media screen and (max-width: 768px){
+    #Lovelace-Animation-Box .Title{
+        letter-spacing: 0.4rem;
+    }
+
+    #Lovelace-Animation-Box .Title{
+        font-size: 1.8rem;
+    }
+}

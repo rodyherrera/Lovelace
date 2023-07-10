@@ -1,0 +1,155 @@
+/***
+ * Copyright (C) Rodolfo Herrera Hernandez. All rights reserved.
+ * Licensed under the MIT license. See LICENSE file in the project root
+ * for full license information.
+ *
+ * =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+ *
+ * In the vast universe of knowledge, the Open Source philosophy 
+ * shines like a radiant star. In this vein, Lovelace emerges 
+ * as an autonomous alternative to ChatGPT, based on 
+ * open source and self-hosting capabilities.
+ * 
+ * Written in JavaScript, interacting with the <g4f> library written 
+ * in Python, allows communication with ChatGPT through the use 
+ * of different services that facilitate its use by the public.
+ * 
+ * For related information - https://github.com/CodeWithRodi/Lovelace/
+ * See also - https://github.com/xtekky/gpt4free
+ * 
+ * :: https://lovelace.codewithrodi.com/
+ * :: https://lovelace-backend.codewithrodi.com/
+ * :: https://lovelace-docs.codewithrodi.com/
+ *
+ * =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+****/
+
+#Menu-Icon-Box .Toggle{
+    display: block;
+    cursor: pointer;
+}
+
+#Menu-Icon-Box .Toggle input{
+    display: none;
+}
+
+#Menu-Icon-Box .Toggle input + div{
+    width: 20px;
+    height: 14px;
+    position: relative;
+}
+
+#Menu-Icon-Box .Toggle input + div div{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    transition: transform 0.5s ease;
+}
+
+#Menu-Icon-Box .Toggle input + div div span{
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
+#Menu-Icon-Box .Toggle input + div div span:first-child{
+    top: 0;
+}
+
+#Menu-Icon-Box .Toggle input + div div span:first-child:before, #Menu-Icon-Box .Toggle input + div div span:first-child:after{
+    top: 0;
+}
+
+#Menu-Icon-Box .Toggle input + div div span:last-child{
+    bottom: 0;
+}
+
+#Menu-Icon-Box .Toggle input + div div span:last-child:before, #Menu-Icon-Box .Toggle input + div div span:last-child:after{
+    bottom: 0;
+}
+
+#Menu-Icon-Box .Toggle input + div div span:before, #Menu-Icon-Box .Toggle input + div div span:after{
+    content: '';
+    display: block;
+    width: 47%;
+    height: 2px;
+    border-radius: 1px;
+    background: #FFFFFF;
+    position: absolute;
+    -webkit-backface-visibility: hidden;
+    transition: transform 0.5s ease, border-radius 0.3s ease, background 0.4s ease;
+}
+
+#Menu-Icon-Box .Toggle input + div div span:before{
+    left: 0;
+    transform-origin: 0 50%;
+    transform: translate(1px, 0) scaleX(1.1);
+}
+
+#Menu-Icon-Box .Toggle input + div div span:after{
+    right: 0;
+    transform-origin: 100% 50%;
+    transform: translate(-1px, 0) scaleX(1.1);
+}
+
+#Menu-Icon-Box .Toggle input + div svg{
+    display: block;
+    fill: none;
+    stroke: #FFFFFF;
+    stroke-width: 2px;
+    width: 44px;
+    height: 44px;
+    stroke-linecap: round;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: -22px 0 0 -22px;
+    stroke-dasharray: 0 82.801 8 82.801;
+    stroke-dashoffset: 82.801;
+    transform-origin: 50% 50%;
+    -webkit-backface-visibility: hidden;
+    transform: scale(1);
+    transition: stroke-dashoffset 0.5s ease, stroke-dasharray 0.6s ease, transform 0.5s ease, stroke 0.4s ease;
+}
+
+#Menu-Icon-Box .Toggle input + div svg:nth-child(3){
+    transform: rotate(180deg) scale(1);
+}
+
+#Menu-Icon-Box .Toggle input:checked + div div{
+    transform: rotate(90deg);
+}
+
+#Menu-Icon-Box .Toggle input:checked + div div span:before, #Menu-Icon-Box .Toggle input:checked + div div span:after{
+    background: #FFFFFF;
+}
+
+#Menu-Icon-Box .Toggle input:checked + div div span:first-child:before{
+    transform: rotate(45deg) translate(2.2px, -3px) scaleX(1.05);
+}
+
+#Menu-Icon-Box .Toggle input:checked + div div span:first-child:after{
+    transform: rotate(-45deg) translate(-2.2px, -3px) scaleX(1.05);
+}
+
+#Menu-Icon-Box .Toggle input:checked + div div span:last-child:before{
+    transform: rotate(-45deg) translate(2.2px, 3px) scaleX(1.05);
+}
+
+#Menu-Icon-Box .Toggle input:checked + div div span:last-child:after{
+    transform: rotate(45deg) translate(-2.2px, 3px) scaleX(1.05);
+}
+
+#Menu-Icon-Box .Toggle input:checked + div svg{
+    stroke-dashoffset: 62;
+    stroke-dasharray: 0 82.801 62 82.801;
+    transform: rotate(90deg);
+    stroke: #FFFFFF;
+}
+
+#Menu-Icon-Box .Toggle input:checked + div svg:nth-child(3){
+    transform: rotate(270deg);
+}

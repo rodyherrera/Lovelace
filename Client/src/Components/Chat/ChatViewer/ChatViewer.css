@@ -1,0 +1,156 @@
+/***
+ * Copyright (C) Rodolfo Herrera Hernandez. All rights reserved.
+ * Licensed under the MIT license. See LICENSE file in the project root
+ * for full license information.
+ *
+ * =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+ *
+ * In the vast universe of knowledge, the Open Source philosophy 
+ * shines like a radiant star. In this vein, Lovelace emerges 
+ * as an autonomous alternative to ChatGPT, based on 
+ * open source and self-hosting capabilities.
+ * 
+ * Written in JavaScript, interacting with the <g4f> library written 
+ * in Python, allows communication with ChatGPT through the use 
+ * of different services that facilitate its use by the public.
+ * 
+ * For related information - https://github.com/CodeWithRodi/Lovelace/
+ * See also - https://github.com/xtekky/gpt4free
+ * 
+ * :: https://lovelace.codewithrodi.com/
+ * :: https://lovelace-backend.codewithrodi.com/
+ * :: https://lovelace-docs.codewithrodi.com/
+ *
+ * =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+****/
+
+#Chat-Viewer-Box{
+    width: 100%;
+    border-radius: 1rem;
+    background-color: #222327;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 1rem;
+    margin: .5rem;
+}
+
+#Chat-Viewer-Box #Chat-History-Box{
+    display: flex;
+    gap: 1rem;
+    height: 100%;
+    background-color: transparent;
+    flex-direction: column;
+    overflow-y: scroll;
+    padding-right: .5rem;
+}
+
+#Chat-Viewer-Box #Software-Presentation-Box > :nth-child(2) > :nth-child(2){
+    margin-top: .5rem;
+}
+
+#Chat-Viewer-Box #Software-Presentation-Box{
+    padding: 1rem;
+    background-color: #121212;
+    border-radius: 1rem;
+    width: 99%;
+    color: #FFFFFF;
+    display: flex;
+    gap: 1rem;
+}
+
+#Chat-Viewer-Box #Software-Presentation-Recommendation-Box{
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    gap: .3rem;
+}
+
+#Chat-Viewer-Box #Input-Decoration-Box{
+    padding: 0 .7rem;
+}
+
+#Chat-Viewer-Box #Input-Decoration-Box .MuiIconButton-root{
+    color: #FFFFFF;
+}
+
+#Chat-Viewer-Box #Chat-Right-Icon{
+    margin-left: 1rem;
+}
+
+#Chat-Viewer-Box #Chat-Input-Box{
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    border: 1px solid #FFFFFF;
+    border-radius: 0.25rem;
+    margin: 0 auto;
+}
+
+#Chat-Viewer-Box #Software-Presentation-Recommendation-Box .Suggestion-Box .Suggestion{
+    color: #8ab4f8;
+    font-size: .9rem;
+    will-change: transform;
+    cursor: pointer;
+}
+
+#Chat-Viewer-Box #Software-Presentation-Recommendation-Box .Suggestion-Box .Suggestion[data-isloading='true']{
+    opacity: .8;
+    cursor: not-allowed;
+}
+
+#Chat-Viewer-Box #Chat-Input{
+    width: 100%;
+}
+
+#Chat-Viewer-Box #Software-Presentation-Recommendation-Box .Suggestion-Box .Suggestion:hover{
+    color: #9dafca;
+}
+
+#Chat-Viewer-Box #Chat-Bottom-Box{
+    display: flex;
+    width: 80%;
+    margin: .7rem auto 0;
+    align-items: center;
+    height: auto;
+}
+
+@media screen and (max-width: 768px){
+    #Chat-Viewer-Box #Software-Presentation-Recommendation-Box .Suggestion-Box .Suggestion{
+        font-size: .75rem;
+    }
+
+    #Chat-Viewer-Box #Chat-Input-Box{
+        width: 99%;
+        border-radius: .3rem;
+        margin: .5rem auto;
+    }
+
+    #Chat-Viewer-Box #Chat-Input{
+        padding: .8rem;
+    }
+
+    #Chat-Viewer-Box #Chat-Bottom-Box{
+        width: 100%;
+    }
+
+    #Chat-Viewer-Box{
+        min-height: 100vh;
+        border-radius: 0;
+        padding: 0;
+        background-color: #000000;
+    }
+
+    #Chat-Viewer-Box #Software-Presentation-Box{
+        padding: 0 1rem;
+        background-color: #000000;
+        margin-bottom: 1rem;
+        border-radius: 0;
+    }
+
+    #HChat-Viewer-Box #Chat-History-Box{
+        padding: 0;
+        overflow-y: unset;
+    }
+}

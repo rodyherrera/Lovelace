@@ -1,0 +1,90 @@
+/***
+ * Copyright (C) Rodolfo Herrera Hernandez. All rights reserved.
+ * Licensed under the MIT license. See LICENSE file in the project root
+ * for full license information.
+ *
+ * =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+ *
+ * In the vast universe of knowledge, the Open Source philosophy 
+ * shines like a radiant star. In this vein, Lovelace emerges 
+ * as an autonomous alternative to ChatGPT, based on 
+ * open source and self-hosting capabilities.
+ * 
+ * Written in JavaScript, interacting with the <g4f> library written 
+ * in Python, allows communication with ChatGPT through the use 
+ * of different services that facilitate its use by the public.
+ * 
+ * For related information - https://github.com/CodeWithRodi/Lovelace/
+ * See also - https://github.com/xtekky/gpt4free
+ * 
+ * :: https://lovelace.codewithrodi.com/
+ * :: https://lovelace-backend.codewithrodi.com/
+ * :: https://lovelace-docs.codewithrodi.com/
+ *
+ * =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+****/
+
+.Stored-Chat-Response-Box{
+    padding-left: 1rem;
+    border-left: 1px solid #FFFFFF;
+    display: flex;
+    gap: .7rem;
+    flex-direction: column;
+}
+
+.Stored-Chat-Response-List-Title{
+    text-transform: uppercase;
+    font-size: .7rem;
+    letter-spacing: 0.06rem;
+    padding-bottom: .2rem;
+}
+
+.Stored-Chat-Response-List-Items-Box{
+    max-height: 170px;
+    overflow-y: scroll;
+}
+
+.Stored-Chat-Response-List-Item-Box{
+    cursor: pointer;
+    will-change: transform;
+    display: flex;
+    display: flex;
+    width: 100%;
+    height: auto;
+    justify-content: space-between;
+    padding-right: 1rem;
+    align-items: center;
+}
+
+.Stored-Chat-Response-List-Item-Box:hover{
+    opacity: .7;
+}
+
+.Stored-Chat-Response-List-Item-Title{
+    white-space: nowrap; 
+    width: 70%; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px){
+    .Stored-Chat-Response-Box{
+        border-left: unset;
+        padding-left: 0;
+    }
+
+    .Stored-Chat-Response-List-Title{
+        border-bottom: 1px solid #FFFFFF;
+        padding-bottom: .3rem;
+        display: inline-block;
+    }
+
+    .Stored-Chat-Response-List-Items-Box{
+        max-height: 250px;
+        padding-left: 1rem;
+        padding-top: 1rem;
+        margin-left: 1rem;
+        border-left: 1px solid #FFFFFF;
+    }
+}

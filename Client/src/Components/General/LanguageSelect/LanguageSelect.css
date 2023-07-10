@@ -1,0 +1,64 @@
+/***
+ * Copyright (C) Rodolfo Herrera Hernandez. All rights reserved.
+ * Licensed under the MIT license. See LICENSE file in the project root
+ * for full license information.
+ *
+ * =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+ *
+ * In the vast universe of knowledge, the Open Source philosophy 
+ * shines like a radiant star. In this vein, Lovelace emerges 
+ * as an autonomous alternative to ChatGPT, based on 
+ * open source and self-hosting capabilities.
+ * 
+ * Written in JavaScript, interacting with the <g4f> library written 
+ * in Python, allows communication with ChatGPT through the use 
+ * of different services that facilitate its use by the public.
+ * 
+ * For related information - https://github.com/CodeWithRodi/Lovelace/
+ * See also - https://github.com/xtekky/gpt4free
+ * 
+ * :: https://lovelace.codewithrodi.com/
+ * :: https://lovelace-backend.codewithrodi.com/
+ * :: https://lovelace-docs.codewithrodi.com/
+ *
+ * =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+****/
+
+#Language-Select-Box{
+    margin: 0;
+    width: auto;
+}
+
+#Language-Select-Box .MuiOutlinedInput-root{
+    border-radius: 0;
+    font-size: .8rem;
+}
+
+#Language-Select-Box .MuiInputBase-input{
+    padding: 4.5px 32px 4.5px 14px !important;
+}
+
+#Language-Select-Box .MuiOutlinedInput-notchedOutline{
+    border-color: #FFFFFF;
+}
+
+#Language-Select-Box .MuiInputLabel-root,
+#Language-Select-Box .MuiSvgIcon-root,
+#Language-Select-Box .MuiOutlinedInput-root{
+    color: #FFFFFF;
+}
+
+@media screen and (max-width: 768px){
+    #Language-Select-Paper-Box{
+        min-width: 50px !important;
+        width: 50px !important;
+    }
+
+    #Language-Select-Box .MuiInputBase-input{
+        padding: 3.5px 32px 3.5px 14px !important;
+    }
+
+    #Language-Select-Paper-Box .MuiMenuItem-root{
+        font-size: .5rem;
+    }
+}

@@ -1,0 +1,116 @@
+/***
+ * Copyright (C) Rodolfo Herrera Hernandez. All rights reserved.
+ * Licensed under the MIT license. See LICENSE file in the project root
+ * for full license information.
+ *
+ * =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+ *
+ * In the vast universe of knowledge, the Open Source philosophy 
+ * shines like a radiant star. In this vein, Lovelace emerges 
+ * as an autonomous alternative to ChatGPT, based on 
+ * open source and self-hosting capabilities.
+ * 
+ * Written in JavaScript, interacting with the <g4f> library written 
+ * in Python, allows communication with ChatGPT through the use 
+ * of different services that facilitate its use by the public.
+ * 
+ * For related information - https://github.com/CodeWithRodi/Lovelace/
+ * See also - https://github.com/xtekky/gpt4free
+ * 
+ * :: https://lovelace.codewithrodi.com/
+ * :: https://lovelace-backend.codewithrodi.com/
+ * :: https://lovelace-docs.codewithrodi.com/
+ *
+ * =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+****/
+
+#Settings-Menu-Box{
+    position: fixed;
+    width: 100%;
+    height: calc(100% - 70px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 500;
+}
+
+#Settings-Menu-Content-Box{
+    width: 700px;
+    height: 500px;
+    background-color: #222327;
+    border-radius: 1.5rem;
+    padding: 1.5rem 2rem;
+}
+
+#Settings-Menu-Header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: auto;
+}
+
+#Settings-Menu-Title{
+    font-size: 1.6rem;
+}
+
+#Settings-Menu-Body .MuiOutlinedInput-notchedOutline{
+    border-color: #FFFFFF;
+}
+
+#Settings-Menu-Body{
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+#Settings-Menu-Body .MuiFormControl-root{
+    width: calc(50% - 2rem);
+}
+
+#Settings-Menu-Close-Icon-Box,
+#Settings-Menu-Body .MuiSvgIcon-root,
+#Settings-Menu-Body .MuiOutlinedInput-root,
+#Settings-Menu-Body .MuiInputLabel-root,
+#Settings-Menu-Body .MuiFormHelperText-root{
+    color: #FFFFFF;
+}
+
+@media screen and (max-width: 768px){
+    #Settings-Menu-Box{
+        height: 100%;
+        align-items: end;
+    }
+
+    #Settings-Menu-Title{
+        font-size: 1.3rem;
+    }
+
+    #Settings-Menu-Header{
+        width: 100%;
+    }
+
+    #Settings-Menu-Body{
+        gap: 1rem;
+    }
+
+    #Settings-Menu-Content-Box{
+        border-radius: unset;
+        overflow-y: scroll;
+        height: 70%;
+        width: 100%;
+        padding: 1rem;
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+    }
+
+    #Settings-Menu-Body .MuiFormControl-root{
+        width: 100%;
+    }
+    
+    #Settings-Menu-Content-Box .MuiOutlinedInput-root,
+    #Settings-Menu-Content-Box .MuiInputLabel-root{
+        font-size: .85rem;
+    }
+}
