@@ -83,7 +83,7 @@ Application.all('*', (Request, Response) => {
 
 Application.use(GlobalErrorHandler);
 const WebServer = BootHelper.GetConfiguredHTTPServerInstance(Application);
-HandleStreamedResponse(SocketIO(WebServer, { cors: { origin: '*' } }));
+HandleStreamedResponse(SocketIO(WebServer, { cors: { origin: process.env.CORS_ORIGIN } }));
 
 WebServer.listen(Port, Hostname, () =>
     console.log(`The server was started successfully in the network address (${Hostname}:${Port}).`));
