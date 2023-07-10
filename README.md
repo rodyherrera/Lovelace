@@ -18,7 +18,7 @@ Table of Contents:
 - Installing necessary dependencies before proceeding with the installation. [[View]](/#before-you-start-the-installation)
 - Cloning the Github repository that contains the Lovelace source code. [[View]](/#cloning-the-repository-and-starting-the-installation)
 - Knowing the functionality of the files and directories found within the cloned repository. [[View]](/#knowing-a-little-more-about-the-contents-of-the-cloned-repository)
-- Running the backend server on the network and in production mode with the help of the process manager for NodeJS PM2. [[View]](/#riding-the-lovelace-backend-and-going-geeper-into-it)
+- Running the backend server on the network. [[View]](/#riding-the-lovelace-backend-and-going-geeper-into-it)
 - Knowing the environment variables that the Lovelace Backend has. [[View]](/#what-about-environment-variables)
 - Mounting the Lovelace Frotend built with Vite + React on the network. [[View]](/#setting-up-the-vite--react-application-delving-into-the-client)
 - Knowing and modifying the environment variables that the Vite + React application has (Frontend). [[View]](/#modifying-environment-variables)
@@ -38,7 +38,7 @@ Table of Contents:
 - Video-based example of the use of the web application on mobile devices. [[View]](https://lovelace-docs.codewithrodi.com/Web-App-Usage#using-the-web-application-on-mobile)
 
 ## Before you start the installation
-Installing Lovelace on your computer or server is relatively simple, you shouldn't have any major complications in the process; however, before you start cloning the repository, make sure you have at least `NodeJS v18.0.0`, `Python v3.10` and `PM2 with SocketIO Deps [npm install -g @socket.io/pm2 pm2]`.
+Installing Lovelace on your computer or server is relatively simple, you shouldn't have any major complications in the process; however, before you start cloning the repository, make sure you have at least `NodeJS v18.0.0` and `Python v3.10`.
 
 Consider that, in case you do not have the required NodeJS version installed on your system, you can use the version manager [`NVM (Node Version Manager)`](https://github.com/nvm-sh/nvm#installing-and-updating).
 
@@ -69,12 +69,6 @@ In the same way, consider having pip installed on your system, since it will be 
 ```bash
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 python3 get-pip.py
-```
-
-Next, we will install the necessary dependencies to be able to use PM2 on SocketIO and in the same way we will install the PM2 process manager, consider that this installation has the `-g` parameter, that is, it will be done globally. The mentioned packages that you will install are necessary, you will not be able to run the server in production if you do not have them.
-
-```bash
-npm install -g @socket.io/pm2 pm2
 ```
 
 Now, assuming you have the aforementioned dependencies installed on your system, we can proceed to the next step...
@@ -131,22 +125,18 @@ Let's start with the server, this is where the magic will happen, you can commun
 # Accessing the <Server> folder that houses the repository you cloned earlier
 cd Server/
 
-# Running the server in Production mode
-npm run production
+# Running the server...
+npm run start
 ```
 
 If you have done everything correctly, the server should already be running on your system. You can check it if you access `http://0.0.0.0:8000/api/v1/`!
 
 ## Other ways to raise the server...
 
-Consider that, when setting up the server in production, `PM2` is used, which is nothing more than a `Process Manager for NodeJS`. It is used in Lovelace due to its built-in load balancer, as well as allowing you to always keep applications active and load them without any downtime, among other advantages in terms of performance. Next, you will have a table with all the scripts you can run using `npm run <script_name>`.
-
 | Script (`npm run <script_name>`) | Description |
 | ------ | ------ |
-| start | Start the server running normally, you may prefer to use this mode in case you want to make development level changes within the source code regarding the server. |
-| production | As previously seen, this mode allows you to mount the server on the network in production mode. |
-| stop | It allows turning off the server that was started in production, since, unlike `npm run start`, when executing `npm run production` the process goes to the background, that is, you cannot give a `CTRL + C` to be able to end the execution, otherwise you should use `npm run stop`. |
-| restart | Following the same line of the previous script of the "`stop`" table, with `npm run restart` you allow to restart the server that is being executed in production mode. |
+| start |The normal execution of the server begins, you can consider this option in case you want to mount it in production. |
+| dev | Start the execution of the server in development mode with the help of the "nodemon" package.|
 
 ## What about environment variables?
 You should know that environment variables are dynamic character values, which allow you to store information related to credentials, configurations, etc..., then you will be presented with the ".env" file located within the server's source code, where in turn you will have a description about the operation of the available variables.

@@ -16,7 +16,7 @@ Table of Contents:
 - Installing necessary dependencies before proceeding with the installation. [[View]](/#before-you-start-the-installation)
 - Cloning the Github repository that contains the Lovelace source code. [[View]](/installation)
 - Knowing the functionality of the files and directories found within the cloned repository. [[View]](/installation#knowing-a-little-more-about-the-contents-of-the-cloned-repository)
-- Running the backend server on the network and in production mode with the help of the process manager for NodeJS PM2. [[View]](/mounting-server-in-the-network/)
+- Running the backend server on the network. [[View]](/mounting-server-in-the-network/)
 - Knowing the environment variables that the Lovelace Backend has. [[View]](/mounting-server-in-the-network/#what-about-environment-variables)
 - Mounting the Lovelace Frotend built with Vite + React on the network. [[View]](/mounting-webapp-in-the-network/)
 - Knowing and modifying the environment variables that the Vite + React application has (Frontend). [[View]](/mounting-webapp-in-the-network/#modifying-environment-variables)
@@ -36,7 +36,7 @@ Table of Contents:
 - Video-based example of the use of the web application on mobile devices. [[View]](/Web-App-Usage#using-the-web-application-on-mobile)
 
 ## Before you start the installation
-Installing Lovelace on your computer or server is relatively simple, you shouldn't have any major complications in the process; however, before you start cloning the repository, make sure you have at least `NodeJS v18.0.0`, `Python v3.10` and `PM2 with SocketIO Deps [npm install -g @socket.io/pm2 pm2]`.
+Installing Lovelace on your computer or server is relatively simple, you shouldn't have any major complications in the process; however, before you start cloning the repository, make sure you have at least `NodeJS v18.0.0` and `Python v3.10`.
 
 Consider that, in case you do not have the required NodeJS version installed on your system, you can use the version manager [`NVM (Node Version Manager)`](https://github.com/nvm-sh/nvm#installing-and-updating).
 
@@ -67,12 +67,6 @@ In the same way, consider having pip installed on your system, since it will be 
 ```bash
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 python3 get-pip.py
-```
-
-Next, we will install the necessary dependencies to be able to use PM2 on SocketIO and in the same way we will install the PM2 process manager, consider that this installation has the `-g` parameter, that is, it will be done globally. The mentioned packages that you will install are necessary, you will not be able to run the server in production if you do not have them.
-
-```bash
-npm install -g @socket.io/pm2 pm2
 ```
 
 Now, assuming you have the aforementioned dependencies installed on your system, we can proceed to the next step...

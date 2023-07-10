@@ -21,14 +21,10 @@ If you have done everything correctly, the server should already be running on y
 
 ## Other ways to raise the server...
 
-Consider that, when setting up the server in production, `PM2` is used, which is nothing more than a `Process Manager for NodeJS`. It is used in Lovelace due to its built-in load balancer, as well as allowing you to always keep applications active and load them without any downtime, among other advantages in terms of performance. Next, you will have a table with all the scripts you can run using `npm run <script_name>`.
-
 | Script (`npm run <script_name>`) | Description |
 | ------ | ------ |
-| start | Start the server running normally, you may prefer to use this mode in case you want to make development level changes within the source code regarding the server. |
-| production | As previously seen, this mode allows you to mount the server on the network in production mode. |
-| stop | It allows turning off the server that was started in production, since, unlike `npm run start`, when executing `npm run production` the process goes to the background, that is, you cannot give a `CTRL + C` to be able to end the execution, otherwise you should use `npm run stop`. |
-| restart | Following the same line of the previous script of the "`stop`" table, with `npm run restart` you allow to restart the server that is being executed in production mode. |
+| start |The normal execution of the server begins, you can consider this option in case you want to mount it in production. |
+| dev | Start the execution of the server in development mode with the help of the "nodemon" package.|
 
 ## What about environment variables?
 You should know that environment variables are dynamic character values, which allow you to store information related to credentials, configurations, etc..., then you will be presented with the ".env" file located within the server's source code, where in turn you will have a description about the operation of the available variables.

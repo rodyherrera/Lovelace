@@ -9,6 +9,5 @@ Server/Tools/GPT/g4f
 Server/node_modules
 Server/package-lock.json
 Server/package.json
-Server/PM2.config.js
 
 Documentation/
