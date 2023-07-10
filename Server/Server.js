@@ -70,7 +70,7 @@ BootHelper.StandarizedBindingToApplication({
 
 Application.all('*', (Request, Response) => {
     if(Request.path.startsWith('/api/v1/')){
-        Response.status(404).json({
+        return Response.status(404).json({
             Status: 'Error',
             Data: {
                 Message: 'INVALID_API_REQUEST',
