@@ -165,6 +165,17 @@ export const ChatProvider = ({ children }) => {
     }, [GetCommunicationMode]);
 
     useEffect(() => {
+        if(!GetModel || !GetProvider || !Object.keys(GetAvailableProviders).length)
+            return;
+        const AvailableProviders = GetAvailableProviders[GetCommunicationMode];
+        const ProviderSettings = AvailableProviders.find(({ Name }) => Name === GetProvider);
+        if(ProviderSettings.Models.includes(GetModel))
+            return;
+        const ProvidersFilteredByModel = AvailableProviders.find(({ Models }) => Models.includes(GetModel));
+        SetProvider(ProvidersFilteredByModel.Name);
+    }, [GetModel, GetProvider, GetAvailableProviders]);
+
+    useEffect(() => {
         Service.StoreLocalStorageSettings({
             Role: GetRole, 
             Provider: MergeObjectValues(Service.StoredLocalStorageSettings()?.Provider || {}, { [GetCommunicationMode]: GetProvider }),

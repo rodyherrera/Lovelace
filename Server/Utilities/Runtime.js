@@ -30,7 +30,8 @@ exports.AvailableProviders = {
         'Theb',
         'Yqcloud',
         'You',
-        'GetGpt'
+        'GetGpt',
+        'Bing'
     ],
     'API': [
         'Aichat',
@@ -38,10 +39,10 @@ exports.AvailableProviders = {
         'DeepAi',
         'Yqcloud',
         'You',
-        'GetGpt'
+        'GetGpt',
+        'Bing'
     ]
 };
-
 exports.AvailableRoles = ['user', 'assistant', 'system'];
 exports.AvailableModels = ['gpt-3.5-turbo', 'gpt-4'];
 
