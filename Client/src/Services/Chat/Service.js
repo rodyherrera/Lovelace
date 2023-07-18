@@ -46,7 +46,10 @@ export const AvailableSettings = {
     ],
     Models: [
         ['GPT-3.5-Turbo (Recommended)', 'gpt-3.5-turbo'],
-        ['GPT-4 (Unstable)', 'gpt-4']
+        ['GPT-4 (Unstable)', 'gpt-4'],
+        ['Falcon-40b', 'falcon-40b'],
+        ['Falcon-7b', 'falcon-7b'],
+        ['Llama-13b', 'llama-13b']
     ]
 };
 

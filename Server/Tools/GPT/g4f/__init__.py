@@ -2,11 +2,14 @@ import sys
 from . import Provider
 from g4f.models import Model, ModelUtils
 
+logging = False
 
 class ChatCompletion:
     @staticmethod
     def create(model: Model.model or str, messages: list, provider: Provider.Provider = None, stream: bool = False, auth: str = False, **kwargs):
         kwargs['auth'] = auth
+        if provider and provider.working == False:
+            return f'{provider.__name__} is not working'
 
         if provider and provider.needs_auth and not auth:
             print(
@@ -26,6 +29,8 @@ class ChatCompletion:
                 print(
                     f"ValueError: {engine.__name__} does not support 'stream' argument", file=sys.stderr)
                 sys.exit(1)
+
+            if logging: print(f'Using {engine.__name__} provider')
 
             return (engine._create_completion(model.name, messages, stream, **kwargs)
                     if stream else ''.join(engine._create_completion(model.name, messages, stream, **kwargs)))

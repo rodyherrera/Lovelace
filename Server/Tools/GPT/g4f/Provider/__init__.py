@@ -14,7 +14,15 @@ from .Providers import (
     H2o,
     ChatgptLogin,
     DeepAi,
-    GetGpt
+    GetGpt,
+    AItianhu,
+    EasyChat,
+    Acytoo,
+    DfeHub,
+    AiService,
+    BingHuan,
+    Wewordle,
+    ChatgptAi,
 )
 
 Palm = Bard

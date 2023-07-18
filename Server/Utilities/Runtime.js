@@ -28,15 +28,23 @@ exports.AvailableProviders = {
     'WS': [
         'DeepAi',
         'Theb',
+        'H2o',
+        'DfeHub',
+        'EasyChat',
         'Yqcloud',
         'You',
         'GetGpt',
         'Bing'
     ],
     'API': [
+        'H2o',
         'Aichat',
+        'AItianhu',
+        'AiService',
         'ChatgptLogin',
         'DeepAi',
+        'DfeHub',
+        'EasyChat',
         'Yqcloud',
         'You',
         'GetGpt',
@@ -44,7 +52,7 @@ exports.AvailableProviders = {
     ]
 };
 exports.AvailableRoles = ['user', 'assistant', 'system'];
-exports.AvailableModels = ['gpt-3.5-turbo', 'gpt-4'];
+exports.AvailableModels = ['gpt-3.5-turbo', 'gpt-4', 'falcon-40b', 'falcon-7b', 'llama-13b'];
 
 exports.DefaultChatParameters = {
     Model: 'gpt-3.5-turbo',
