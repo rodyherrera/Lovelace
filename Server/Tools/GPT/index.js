@@ -40,23 +40,29 @@ const BasePyShellOptions = {
 
 const FormatPyShellException = (ErrorID, { traceback }) => ({ ErrorID, Exception: traceback });
 
-const HandlePyShellResponse = ({ Resolve, Reject, Callback }, PyShell) => {
-    if(Reject){
-        PyShell.on('error', (PyShellError) => Reject(FormatPyShellException('GPT::PyShell:Error', PyShellError)));
-        PyShell.on('pythonError', (PyShellRuntimeError) => Reject(FormatPyShellException('GPT::PyShell::Python::Error', PyShellRuntimeError)));
-    }
-    PyShell.on('message', (Message) => (Callback) ? (Callback(Message)) : (Resolve(Message)));
-    PyShell.on('close', () => Resolve());
-};
+const HandlePyShellResponse = (Options, PyShell) => new Promise((Resolve, Reject) => {
+    PyShell.on('error', (PyShellError) => {
+        const FormattedException = FormatPyShellException('GPT::PyShell::Error', PyShellError);        
+        Reject(FormattedException);
+    });
+    PyShell.on('pythonError', (PyShellRuntimeError) => {
+        const FormattedException = FormatPyShellException('GPT::PyShell::Python::Error', PyShellRuntimeError);
+        Reject(FormattedException);
+    });
+    PyShell.on('message', (Message) => {
+        (Options?.CommunicationMode === 'WS') ? (Options?.Callback?.(Message)) : (Resolve(Message));
+    });
+    PyShell.on('close', () => {
+        Resolve();
+    });
+});
 
-// ! MAYBE AVOID CALL TO PYTHON AND SAVE PROVIDER
-// ! INFO IN SERVER LOAD?
-exports.CollectProviders = () => new Promise((Resolve, Reject) =>
-    HandlePyShellResponse({ Resolve, Reject }, new PythonShell(GPT_PY_FILE, {
-        ...BasePyShellOptions,
-        args: [...BasePyShellOptions.args, null, 'PROVIDERS'] })));
+exports.CollectProviders = () => HandlePyShellResponse({}, new PythonShell(GPT_PY_FILE, { ...BasePyShellOptions, args: [ ...BasePyShellOptions.args, null, 'PROVIDERS' ] }));
 
-exports.GPT = (Query, CommunicationMode, Callback) => new Promise((Resolve, Reject) =>
-    HandlePyShellResponse({ Resolve, Reject, Callback }, new PythonShell(GPT_PY_FILE, {
+exports.GPT = (Query, CommunicationMode, Callback) => HandlePyShellResponse(
+    { Callback, CommunicationMode }, new PythonShell(GPT_PY_FILE, {
         ...BasePyShellOptions,
-        args: [...BasePyShellOptions.args, JSON.stringify(Query), CommunicationMode] })));
+        args: [...BasePyShellOptions.args, JSON.stringify(Query), CommunicationMode]
+    }));
+
+module.exports = exports;

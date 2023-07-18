@@ -109,7 +109,10 @@ export const ChatProvider = ({ children }) => {
         SetIsLoading(true);
         (!OutOfStatePrompt) && (SetPrompt(''));
         const RequestedPrompt = (OutOfStatePrompt || GetPrompt);
-        const ServerQuery = { Prompt: RequestedPrompt, Role: GetRole, Model: GetModel, Provider: GetProvider };
+        const ServerQuery = {
+            Model: GetModel,
+            Provider: GetProvider,
+            Messages: [ ...Service.GetStoredChatResponsesAsGPTContext(), { Role: GetRole, Content: RequestedPrompt } ] };
         const ID = v4();
         if(GetCommunicationMode === 'WS'){
             SetStreamedResponses((StreamedResponses) => ({ ...StreamedResponses, [RequestedPrompt]: { Response: '' } }));
@@ -124,7 +127,12 @@ export const ChatProvider = ({ children }) => {
                     const Buffer = {
                         ...StreamedResponses,
                         [RequestedPrompt]: { Response: StreamedResponses[RequestedPrompt].Response += Answer, ID } };
-                    Service.StoreChatResponse({ ...ServerQuery, ID, Response: Buffer[RequestedPrompt].Response }, LastChatResponseIndex);
+                    Service.StoreChatResponse({ 
+                        ...ServerQuery, 
+                        Prompt: RequestedPrompt, 
+                        Role: GetRole, 
+                        ID, 
+                        Response: Buffer[RequestedPrompt].Response }, LastChatResponseIndex);
                     return Buffer;
                 });
             });

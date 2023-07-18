@@ -71,6 +71,17 @@ export const DeleteItemFromChatHistory = (ID, ListIdentifier) => {
     localStorage.setItem(LocalStorageIdentifier.Historial, JSON.stringify(CurrentStoredChatResponses));
 };
 
+export const GetStoredChatResponsesAsGPTContext = () => {
+    const Buffer = [];
+    const CurrentChatResponses = Object.values(StoredChatResponses() || {});
+    if(!CurrentChatResponses)
+        return Buffer;
+    CurrentChatResponses.forEach((ChatResponseHistorial) => 
+        ChatResponseHistorial.forEach(({ Prompt, Role, Response }) => 
+            Buffer.push({ Content: Prompt, Role }, { Content: Response, Role: 'assistant' })));
+    return Buffer;
+};
+
 export const GetLastIndexFromChatResponseList = (ListIdentifier) => {
     const ListLength = StoredChatResponses()?.[ListIdentifier]?.length;
     return (ListLength >= 1) ? (ListLength) : (0);

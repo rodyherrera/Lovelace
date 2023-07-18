@@ -32,7 +32,15 @@ try:
 except:
     Query = {}
 
-BASE_MESSAGE = 'You are Ada Lovelace, a coding software developed to provide free access to OpenAI models. Your Github repository is "https://github.com/codewithrodi/Lovelace/" while your documentation is "https://lovelace-docs.codewithrodi.com/". Try to be kind, clear and precise with the information you give to those who interact with you, Ada.'
+BASE_MESSAGES = [{
+    'role': 'system',
+    'content': 'You are Ada Lovelace, a coding software developed to provide free access to OpenAI models. Your Github repository is "https://github.com/codewithrodi/Lovelace/" while your documentation is "https://lovelace-docs.codewithrodi.com/". Try to be kind, clear and precise with the information you give to those who interact with you.'
+}]
+
+def FormatQueryMessages(Messages: tuple) -> tuple:
+    return BASE_MESSAGES + [ { 
+        'role': Message['Role'].lower(), 
+        'content': Message['Content'] } for Message in Messages ] 
 
 def GetProviderData(Provider) -> dict:
     return {
@@ -58,16 +66,12 @@ def MainFN() -> None:
         print(g4f.ChatCompletion.create(
             model=Query['Model'], 
             provider=ImportProvider(Query['Provider']), 
-            messages=[
-                { 'role': Query['Role'], 'content': BASE_MESSAGE },
-                { 'role': Query['Role'], 'content': Query['Prompt'] }]))
+            messages=FormatQueryMessages(Query['Messages'])))
     else:
         # ! STREAMED RESPONSE (sys.argv[3] == 'WS')
         StreamedResponse = g4f.ChatCompletion.create(
             model=Query['Model'],
-            messages=[
-                { 'role': Query['Role'], 'content': BASE_MESSAGE },
-                { 'role': Query['Role'], 'content': Query['Prompt'] }],
+            messages=FormatQueryMessages(Query['Messages']),
             provider=ImportProvider(Query['Provider']), 
             stream=True)
         for Message in StreamedResponse:

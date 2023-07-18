@@ -35,10 +35,11 @@ const { GPT, CollectProviders } = require('../Tools/GPT');
 
 const SanitizedClientQuery = (Query, CommunicationMode, Next) => {
     // TODO: Add a maximum length for prompt.
-    let { Model, Role, Provider } = Query;
+    let { Model, Role, Provider, Messages, Prompt } = Query;
     (!Model) && (Model = DefaultChatParameters.Model);
     (!Role) && (Role = DefaultChatParameters.Role);
     (!Provider) && (Provider = DefaultChatParameters.Provider);
+    (!Array.isArray(Messages) || !Messages) && (Messages = [ { Role, Content: Prompt } ])
     Model = Model.toLowerCase();
     Role = Role.toLowerCase();
     if(
@@ -52,7 +53,7 @@ const SanitizedClientQuery = (Query, CommunicationMode, Next) => {
         return Next((CommunicationMode === 'API')
             ? (new RuntimeError(ErrorID)) : (ErrorID));
     }
-    return { ...Query, Model, Role, Provider };
+    return { Messages, Model, Provider };
 };
 
 // TODO: Add a <GetSettings || Related Function Name> for retrieve
@@ -67,9 +68,9 @@ exports.GetProviders = CatchAsync(async (_, Response, Next) => {
 });
 
 exports.HandleCompletion = CatchAsync(async (Request, Response, Next) => {
-    const { Model, Prompt, Role, Provider } = SanitizedClientQuery(Request.body, 'API', Next);
+    const { Model, Messages, Provider } = SanitizedClientQuery(Request.body, 'API', Next);
     try{
-        const Answer = await GPT({ Model, Prompt, Role, Provider }, 'API');
+        const Answer = await GPT({ Model, Messages, Provider }, 'API');
         Response.status(200).json({ Status: 'Success', Data: { Answer } });
     }catch({ ErrorID, Exception }){
         Next(new RuntimeError(ErrorID, 500, Exception));
@@ -80,11 +81,11 @@ exports.HandleStreamedResponse = (WebSocket) => {
     // TODO: Is this the correct way of do it?, Can it generate an eventually Callback Hell?
     WebSocket.on('connection', (Socket) => {
         Socket.on('Prompt', async (Query, Callback) => {
-            const { Model, Prompt, Role, Provider } = SanitizedClientQuery(Query, 
+            const { Model, Messages, Provider } = SanitizedClientQuery(Query, 
                     'WS', (ErrorID) => Socket.emit('Response', ErrorID));
             let GPTError = null;
             try{
-                await GPT({ Model, Prompt, Role, Provider }, 
+                await GPT({ Model, Messages, Provider }, 
                     'WS', (Answer) => Socket.emit('Response', Answer));
             }catch(Exception){
                 GPTError = Exception;
