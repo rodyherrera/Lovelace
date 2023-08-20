@@ -22,7 +22,7 @@
 # :: https://lovelace-docs.codewithrodi.com/
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-import sys, json, importlib, g4f
+import json, sys, g4f
 
 AvailableProviders = json.loads(sys.argv[1])
 
@@ -43,16 +43,22 @@ def FormatQueryMessages(Messages: tuple) -> tuple:
         'content': Message['Content'] } for Message in Messages ] 
 
 def GetProviderData(Provider) -> dict:
+    ImportedProvider = ImportProvider(Provider)
+    Models = []
+    if(ImportedProvider.supports_gpt_35_turbo):
+        Models.append('gpt-3.5-turbo')
+    if(ImportedProvider.supports_gpt_4):
+        Models.append('gpt-4')
+    if(Provider == 'H2o'):
+        Models.extend(['falcon-40b', 'falcon-7b', 'llama-13b'])
     return {
         'Name': Provider,
-        'Website': ImportProvider(Provider).url,
-        'Models': [ImportProvider(Provider).model] 
-                if isinstance(ImportProvider(Provider).model, str) 
-                else ImportProvider(Provider).model   
+        'Website': ImportedProvider.url,
+        'Models': Models
     }
 
 def ImportProvider(ProviderName: str): 
-    return importlib.import_module('g4f.Provider.Providers.' + ProviderName)
+    return eval('g4f.Provider.' + ProviderName)
 
 def MainFN() -> None:
     if sys.argv[3] == 'PROVIDERS':

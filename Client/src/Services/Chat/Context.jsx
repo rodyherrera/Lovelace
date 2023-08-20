@@ -177,9 +177,15 @@ export const ChatProvider = ({ children }) => {
             return;
         const AvailableProviders = GetAvailableProviders[GetCommunicationMode];
         const ProviderSettings = AvailableProviders.find(({ Name }) => Name === GetProvider);
+        const FindProviders = (CommunicationMode = GetCommunicationMode) => {
+            const FilteredProviders = GetAvailableProviders[CommunicationMode].find(({ Models }) => Models.includes(GetModel));
+            if(!FilteredProviders)
+                return FindProviders(CommunicationMode === 'WS' ? 'API' : 'WS');
+            return FilteredProviders;
+        };
         if(ProviderSettings.Models.includes(GetModel))
             return;
-        const ProvidersFilteredByModel = AvailableProviders.find(({ Models }) => Models.includes(GetModel));
+        const ProvidersFilteredByModel = FindProviders();
         SetProvider(ProvidersFilteredByModel.Name);
     }, [GetModel, GetProvider, GetAvailableProviders]);
 
