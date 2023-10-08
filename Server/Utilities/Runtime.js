@@ -26,32 +26,31 @@
 
 exports.AvailableProviders = {
     'WS': [
-        'DeepAi',
-        'GetGpt',
-        'H2o'
+        'Bing',
+        'ChatBase',
+        'GptGo',
+        'Vitalentum',
+        'Ylokh',
+        'Automatic',
     ],
     'API': [
-        'Acytoo',
-        'Aichat',
-        'Ails',
+        'GptGo',
         'ChatgptAi',
-        'Vercel',
-        'H2o',
-        'Wewordle',
-        'You',
-        'Yqcloud',
+        'ChatBase',
         'DeepAi',
-        'DfeHub',
-        'GetGpt'
+        'Bing',
+        'Vitalentum',
+        'You',
+        'Automatic'
     ]
 };
 exports.AvailableRoles = ['user', 'assistant', 'system'];
-exports.AvailableModels = ['gpt-3.5-turbo', 'gpt-4', 'falcon-40b', 'falcon-7b', 'llama-13b'];
+exports.AvailableModels = ['gpt-3.5-turbo', 'gpt-4'];
 
 exports.DefaultChatParameters = {
     Model: 'gpt-3.5-turbo',
     Role: 'user',
-    Provider: 'DeepAi'
+    Provider: 'Automatic'
 };
 
 exports.RuntimeError = class extends Error{

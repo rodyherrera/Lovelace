@@ -31,7 +31,7 @@ export const LocalStorageIdentifier = {
     Historial: 'Lovelace::Service::History'
 };
 
-export const RecommendedProviders = { WS: 'DeepAi', API: 'DeepAi' };
+export const RecommendedProviders = { WS: 'Automatic', API: 'Automatic' };
 export const StoredChatResponses = () => QuickLocalStorageRescue(LocalStorageIdentifier.Historial);
 
 export const AvailableSettings = {
@@ -46,10 +46,7 @@ export const AvailableSettings = {
     ],
     Models: [
         ['GPT-3.5-Turbo (Recommended)', 'gpt-3.5-turbo'],
-        ['GPT-4 (Unstable)', 'gpt-4'],
-        ['Falcon-40b', 'falcon-40b'],
-        ['Falcon-7b', 'falcon-7b'],
-        ['Llama-13b', 'llama-13b']
+        ['GPT-4 (Unstable)', 'gpt-4']
     ]
 };
 
