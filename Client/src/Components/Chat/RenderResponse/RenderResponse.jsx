@@ -24,7 +24,7 @@
  * =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 ****/
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import { BsRobot } from 'react-icons/bs';
 import { TbBrandRedhat } from 'react-icons/tb';
 import { With } from '../../../Utilities/Runtime';
@@ -53,12 +53,16 @@ const RenderResponse = ({ Content, Discipline }) => (
                                         wrapLines={true}
                                         codeBlock={true}
                                         text={CodeContent.join('\n')} />
-                                ), Code.split('\n')))}
+                                ), Code.split('\n').slice(0, -1)))}
                                 <p>{FinalContent}</p>
                             </React.Fragment>
                         ), Content.split('```')))
                     ) : (
-                        <p>{Content}</p>
+                        (Content.includes('\n') ? (
+                            Content.split('\n').map((Part) => <p>{Part}</p>)
+                        ) : (
+                            <p>{Content}</p>
+                        ))
                     ))
                 ) : (
                     <WaitingResponse />

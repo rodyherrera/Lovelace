@@ -1,5 +1,7 @@
 import json, sys, g4f
 
+g4f.version_check = False
+
 AvailableProviders = json.loads(sys.argv[1])
 
 try:
@@ -7,13 +9,13 @@ try:
 except:
     Query = {}
 
-def FormatQueryMessages(Messages: tuple, Provider) -> tuple:
+def FormatQueryMessages(Messages: tuple) -> tuple:
     BASE_MESSAGES = [{
-        'role': 'user' if Provider == 'ChatBase' else 'system',
+        'role': 'system',
         'content': 'You are Ada Lovelace, a coding software developed to provide free access to OpenAI models. Your Github repository is "https://github.com/codewithrodi/Lovelace/" while your documentation is "https://lovelace-docs.codewithrodi.com/". Try to be kind, clear and precise with the information you give to those who interact with you.'
     }]
     return BASE_MESSAGES + [ { 
-        'role': 'user' if Provider == 'ChatBase' else Message.get('Role', 'user').lower(), 
+        'role': Message.get('Role', 'user').lower(), 
         'content': Message.get('Content') } for Message in Messages ] 
 
 def GetProviderData(Provider) -> dict:
@@ -52,12 +54,13 @@ def MainFN() -> None:
         elif sys.argv[3] == 'API' or sys.argv[3] == 'WS':
             Model = Query['Model']
             Provider = None if Query['Provider'] == 'Automatic' else ImportProvider(Query['Provider'])
-            Messages = FormatQueryMessages(Query['Messages'], Query['Provider'])
+            Messages = FormatQueryMessages(Query['Messages'])
             if sys.argv[3] == 'API':
-                print(g4f.ChatCompletion.create(
+                Response = g4f.ChatCompletion.create(
                     model=Model,
                     provider=Provider, 
-                    messages=Messages))
+                    messages=Messages)
+                print(Response.join('\n'))
             else:
                 StreamedResponse = g4f.ChatCompletion.create(
                     model=Model,
@@ -65,7 +68,7 @@ def MainFN() -> None:
                     provider=Provider, 
                     stream=True)
                 for Message in StreamedResponse:
-                    print(Message)
+                    print(Message, end='', flush=True)
     except Exception as GPTException:
         print(GPTException)
 

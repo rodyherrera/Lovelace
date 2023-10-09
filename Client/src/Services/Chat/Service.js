@@ -93,6 +93,10 @@ export const RetrieveChatResponseDateData = (DateInstance = new Date()) => {
     ];
 };
 
+export const ClearChatResponses = () => {
+    localStorage.clear(LocalStorageIdentifier.Historial);
+};
+
 export const StoreChatResponse = (Response, Index = undefined) => {
     const [ Identifier, CreatedAt ] = RetrieveChatResponseDateData();
     const CurrentStoredResponses = StoredChatResponses() || {};

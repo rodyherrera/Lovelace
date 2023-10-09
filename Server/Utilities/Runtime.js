@@ -34,12 +34,8 @@ exports.AvailableProviders = {
         'Automatic',
     ],
     'API': [
-        'GptGo',
-        'ChatgptAi',
-        'ChatBase',
-        'DeepAi',
+        'Acytoo',
         'Bing',
-        'Vitalentum',
         'You',
         'Automatic'
     ]

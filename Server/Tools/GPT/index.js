@@ -50,7 +50,10 @@ const HandlePyShellResponse = (Options, PyShell) => new Promise((Resolve, Reject
         Reject(FormattedException);
     });
     PyShell.on('message', (Message) => {
-        (Options?.CommunicationMode === 'WS') ? (Options?.Callback?.(Message)) : (Resolve(Message));
+        if(Options?.CommunicationMode === 'WS')
+            Options?.Callback?.(Message);
+        else
+            Resolve(Message);
     });
     PyShell.on('close', () => {
         Resolve();

@@ -80,10 +80,14 @@ export const ChatProvider = ({ children }) => {
 
     const HandleChatResponseSelect = (ListID) => {
         const Buffer = [];
-        Service.StoredChatResponses()[ListID].forEach(({ Prompt, Response, ID }) => 
-            (Buffer.push({ Discipline: 'Client', Answer: Prompt, ID }, { Discipline: 'Server', Answer: Response, ID })));
-        SetStreamedResponses({});
-        SetAPIResponses(Buffer);
+        try{
+            Service.StoredChatResponses()[ListID].forEach(({ Prompt, Response, ID }) => 
+                (Buffer.push({ Discipline: 'Client', Answer: Prompt, ID }, { Discipline: 'Server', Answer: Response, ID })));
+            SetStreamedResponses({});
+            SetAPIResponses(Buffer);
+        }catch(PersistChatError){
+            Service.ClearChatResponses();
+        }
     };
 
     const MountModifiedChatResponseList = (ID) => {
@@ -126,7 +130,7 @@ export const ChatProvider = ({ children }) => {
                 SetStreamedResponses((StreamedResponses) => {
                     const Buffer = {
                         ...StreamedResponses,
-                        [RequestedPrompt]: { Response: StreamedResponses[RequestedPrompt].Response += Answer, ID } };
+                        [RequestedPrompt]: { Response: StreamedResponses[RequestedPrompt].Response += Answer + '\n', ID } };
                     Service.StoreChatResponse({ 
                         ...ServerQuery, 
                         Prompt: RequestedPrompt, 
