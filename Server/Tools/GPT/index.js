@@ -60,6 +60,8 @@ const HandlePyShellResponse = (Options, PyShell) => new Promise((Resolve, Reject
     });
 });
 
+exports.VersionChecker = () => HandlePyShellResponse({}, new PythonShell(GPT_PY_FILE, { ...BasePyShellOptions, args: [ ...BasePyShellOptions.args, null, 'VERSION' ] }));
+
 exports.CollectProviders = () => HandlePyShellResponse({}, new PythonShell(GPT_PY_FILE, { ...BasePyShellOptions, args: [ ...BasePyShellOptions.args, null, 'PROVIDERS' ] }));
 
 exports.GPT = (Query, CommunicationMode, Callback) => HandlePyShellResponse(

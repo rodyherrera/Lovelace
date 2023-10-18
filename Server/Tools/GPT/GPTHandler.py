@@ -1,5 +1,7 @@
+from requests import get
 import json, sys, g4f
 
+g4f.logging = False
 g4f.version_check = False
 
 AvailableProviders = json.loads(sys.argv[1])
@@ -69,6 +71,14 @@ def MainFN() -> None:
                     stream=True)
                 for Message in StreamedResponse:
                     print(Message, end='', flush=True)
+        elif sys.argv[3] == 'VERSION':
+            PypiResponse = get("https://pypi.org/pypi/g4f/json").json()
+            LatestVersion = PypiResponse["info"]["version"]
+
+            if g4f.version != LatestVersion:
+                print('UPDATE')
+            else:
+                print('UP_TO_DATE')
     except Exception as GPTException:
         print(GPTException)
 

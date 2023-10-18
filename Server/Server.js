@@ -35,6 +35,7 @@ const HPP = require('hpp');
 const Cors = require('cors');
 const SocketIO = require('socket.io');
 const BootHelper = require('./Utilities/BootHelper');
+const ChildProcess = require('child_process');
 
 process.on('uncaughtException', (UncaughtServerError) => {
     console.error(UncaughtServerError);
@@ -46,6 +47,7 @@ const Application = Express();
 const Port = process.env.SERVER_PORT || 8000;
 const Hostname = process.env.SERVER_HOST || '0.0.0.0';
 const { HandleStreamedResponse } = require('./Controllers/Chat');
+const { VersionChecker } = require('./Tools/GPT');
 
 BootHelper.StandarizedBindingToApplication({
     Application,
@@ -85,8 +87,19 @@ Application.use(GlobalErrorHandler);
 const WebServer = BootHelper.GetConfiguredHTTPServerInstance(Application);
 HandleStreamedResponse(SocketIO(WebServer, { cors: { origin: process.env.CORS_ORIGIN } }));
 
-WebServer.listen(Port, Hostname, () =>
-    console.log(`The server was started successfully in the network address (${Hostname}:${Port}).`));
+WebServer.listen(Port, Hostname, () => {
+    setInterval(async () => {
+        try{
+            const Response = await VersionChecker();
+            if(Response === 'UP_TO_DATE')
+                return;
+            ChildProcess.spawn('pip', ['install', '-U', 'g4f']);
+        }catch(VersionUpdateError){
+            console.warn(VersionUpdateError);
+        }
+    }, 1000 * 60 * process.env.TIME_FOR_CHECK_AND_UPDATE_PACKAGES); // 3 Minutes
+    console.log(`The server was started successfully in the network address (${Hostname}:${Port}).`);
+});
 
 process.on('unhandledRejection', (UnhandledServerError) => {
     console.warn(UnhandledServerError);
